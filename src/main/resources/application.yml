@@ -1,0 +1,57 @@
+server:
+  port: 8080 # 应用服务 WEB 访问端口
+  servlet:
+    context-path: /api
+    session:
+      cookie:
+        max-age: 2592000 # cookie 30 天过期
+        domain: localhost
+
+spring:
+  application:
+    name: springboot-init # 应用名称
+  profiles:
+    active: dev # 环境设置： dev | test | prod
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
+  session: # session配置
+#    store-type: redis # 开启分布式 session（Redis）
+    timeout: 2592000 # 30 天过期
+  datasource: #配置数据库
+    url: jdbc:mysql://localhost:3306/my_db
+    username: root
+    password: 123456
+  redis: #redis配置
+    database: 0
+    host: localhost
+    port: 6379
+  servlet: # 文件上传
+    multipart:
+      max-file-size: 10MB  # 大小限制
+  thymeleaf: # THYMELEAF (ThymeleafAutoConfiguration)
+    cache: true # 开启模板缓存（默认值： true ）
+    check-template: true # 检查模板是否存在，然后再呈现
+    check-template-location: true # 检查模板位置是否正确（默认值 :true ）
+    content-type: text/html #Content-Type 的值（默认值： text/html ）
+    enabled: true # 开启 MVC Thymeleaf 视图解析（默认值： true ）
+    encoding: UTF-8 # 模板编码
+    excluded-view-names: # 指定视图名称列表，不解析这些视图（多个视图名，逗号分隔）
+    mode: HTML5 # 指定 Thymeleaf 模式（默认值： HTML5）
+    prefix: classpath:/templates/ # 指定模板的路径前缀（默认值： classpath:/templates/）
+    suffix: .html # 模板文件的后缀名（默认值： .html）
+
+mybatis: #MyBatis配置
+  mapper-locations: classpath:mapper/*xml   #指定Mybatis的Mapper文件
+  type-aliases-package: com.ysx.springboot.springbootinitmaster.mybatis.entity #指定Mybatis的实体目录
+
+mybatis-plus:
+  configuration:
+    map-underscore-to-camel-case: false #开启自动驼峰命名规则
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl #日志输出
+  global-config:
+    db-config:
+      logic-delete-field: isDelete # 全局逻辑删除的实体字段名
+      logic-delete-value: 1 # 逻辑已删除值（默认为 1）
+      logic-not-delete-value: 0 # 逻辑未删除值（默认为 0）
+
