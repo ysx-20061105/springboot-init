@@ -70,6 +70,5 @@ SpringBoot初始化模板，包含SpringBoot、MyBatis、MySQL、Redis、Swagger
 
 1. 修改application.yml中的数据库连接信息
 2. 运行SpringbootApplication.java
-3. 访问http://localhost:8080/user/ 进行测试
-4. 访问http://localhost:8080/user/list 进行测试
-5. 接口文档http://localhost:8080/api/doc.html#/home
+3. 访问http://localhost:8080/api/user/ 进行测试
+4. 接口文档http://localhost:8080/api/doc.html#/home
